@@ -1,0 +1,51 @@
+[workspace]
+members = ["backend", "frontend", "wasm", "shared"]
+resolver = "2"
+
+[workspace.dependencies]
+# 异步运行时
+tokio = { version = "1.35", features = ["full"] }
+tokio-util = { version = "0.7", features = ["full"] }
+futures = "0.3"
+
+# 序列化
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# 错误处理
+thiserror = "1.0"
+anyhow = "1.0"
+
+# 日志
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# 时间
+chrono = { version = "0.4", features = ["serde"] }
+
+# WebSocket
+tokio-tungstenite = "0.21"
+
+# HTTP客户端
+reqwest = { version = "0.11", features = ["json", "stream"] }
+
+# 共享随机数
+tokio-rand = "0.1"
+
+# 共享配置
+config = "0.14"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.wasm]
+inherits = "release"
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

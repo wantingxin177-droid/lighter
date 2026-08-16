@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-bg: #09090b;
+    --color-surface: #18181b;
+    --color-border: #27272a;
+    --color-text: #fafafa;
+    --color-text-muted: #a1a1aa;
+    --color-primary: #10b981;
+    --color-primary-dark: #059669;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+}
+
+/* 链接样式 */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 按钮重置 */
+button {
+    font-family: inherit;
+}
+
+/* 表格样式 */
+table {
+    border-collapse: collapse;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .max-w-7xl {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

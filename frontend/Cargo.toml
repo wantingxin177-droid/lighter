@@ -1,0 +1,72 @@
+[package]
+name = "kin-frontend"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Leptos - Rust前端框架
+leptos = { version = "0.6", features = ["csr", "nightly"] }
+leptos_router = { version = "0.6", features = ["csr", "nightly"] }
+leptos_meta = { version = "0.6", features = ["csr", "nightly"] }
+
+# 序列化
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# HTTP客户端
+gloo-net = "0.5"
+reqwasm = "0.5"
+
+# WebSocket
+gloo-net = { version = "0.5", features = ["websocket"] }
+
+# 时间
+chrono = { workspace = true }
+
+# 工具
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+web-sys = "0.3"
+
+# 共享库
+shared = { path = "../shared" }
+
+# 控制台日志
+console_error_panic_hook = "0.1"
+wasm-logger = "0.2"
+log = "0.4"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    "console",
+    "Window",
+    "Document",
+    "Element",
+    "HtmlElement",
+    "HtmlCollection",
+    "Node",
+    "NodeList",
+    "Event",
+    "EventTarget",
+    "MouseEvent",
+    "KeyboardEvent",
+    "WebSocket",
+    "MessageEvent",
+    "CloseEvent",
+    "ErrorEvent",
+]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
