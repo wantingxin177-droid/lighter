@@ -11,7 +11,7 @@ pub fn Home() -> impl IntoView {
 
     view! {
         <div>
-            <PageTitle title="Dashboard".to_string()/>
+            <PageTitle title=move || "Dashboard".to_string()/>
             
             // 统计卡片
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
@@ -34,7 +34,7 @@ pub fn Home() -> impl IntoView {
             </div>
 
             // 快速导航
-            <SectionTitle title="Quick Navigation".to_string()/>
+            <SectionTitle title=move || "Quick Navigation".to_string()/>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <NavigationCard 
                     title="Block Explorer"

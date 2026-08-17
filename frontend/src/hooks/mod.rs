@@ -64,7 +64,7 @@ pub fn use_websocket(url: &str) -> (ReadSignal<Option<String>>, WriteSignal<Opti
 }
 
 // API Fetch Hook
-pub fn use_api<T>(url: &str) -> (ReadSignal<Option<T>>, ReadSignal<bool>, ReadSignal<Option<String>>> 
+pub fn use_api<T>(url: &str) -> (ReadSignal<Option<T>>, ReadSignal<bool>, ReadSignal<Option<String>>) 
 where
     T: serde::de::DeserializeOwned + 'static,
 {
@@ -76,6 +76,7 @@ where
 
     create_effect(move |_| {
         set_loading.set(true);
+        let url = url.clone();
         
         wasm_bindgen_futures::spawn_local(async move {
             match fetch_json::<T>(&url).await {

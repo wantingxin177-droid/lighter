@@ -12,12 +12,12 @@ pub fn Explorer() -> impl IntoView {
 
     view! {
         <div>
-            <PageTitle title="Block Explorer".to_string()/>
+            <PageTitle title=move || "Block Explorer".to_string()/>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 // 最新区块
                 <div>
-                    <SectionTitle title="Latest Blocks".to_string()/>
+                    <SectionTitle title=move || "Latest Blocks".to_string()/>
                     <Card>
                         <div class="space-y-2">
                             {move || blocks.get().map(|blocks| {
@@ -31,7 +31,7 @@ pub fn Explorer() -> impl IntoView {
 
                 // 最新交易
                 <div>
-                    <SectionTitle title="Latest Transactions".to_string()/>
+                    <SectionTitle title=move || "Latest Transactions".to_string()/>
                     <Card>
                         <div class="space-y-2">
                             {move || txs.get().map(|txs| {

@@ -59,13 +59,10 @@ pub fn Badge(
 }
 
 #[component]
-pub fn DataTable<T>(
+pub fn DataTable(
     #[prop(into)] headers: Vec<String>,
     rows: Vec<Vec<String>>,
-) -> impl IntoView
-where
-    T: 'static,
-{
+) -> impl IntoView {
     view! {
         <div class="overflow-x-auto">
             <table class="w-full text-sm">

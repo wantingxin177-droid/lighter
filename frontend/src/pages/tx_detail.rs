@@ -17,7 +17,7 @@ pub fn TransactionDetail() -> impl IntoView {
 
     view! {
         <div>
-            <PageTitle title="Transaction Details".to_string()/>
+            <PageTitle title=move || "Transaction Details".to_string()/>
             
             {move || tx.get().map(|tx| view! {
                 <Card>

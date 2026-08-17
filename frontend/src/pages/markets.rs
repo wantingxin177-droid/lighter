@@ -13,7 +13,7 @@ pub fn Markets() -> impl IntoView {
 
     view! {
         <div>
-            <PageTitle title="Markets".to_string()/>
+            <PageTitle title=move || "Markets".to_string()/>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {symbols.into_iter().map(|symbol| view! {

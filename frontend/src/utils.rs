@@ -42,7 +42,7 @@ pub fn format_time_ago(timestamp: i64) -> String {
 pub async fn copy_to_clipboard(text: &str) -> Result<(), JsValue> {
     let window = web_sys::window().ok_or("No window")?;
     let navigator = window.navigator();
-    let clipboard = navigator.clipboard().ok_or("No clipboard")?;
+    let clipboard = navigator.clipboard();
     
     let promise = clipboard.write_text(text);
     wasm_bindgen_futures::JsFuture::from(promise).await?;

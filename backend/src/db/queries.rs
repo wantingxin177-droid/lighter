@@ -1,6 +1,7 @@
 use super::models::*;
 use super::Database;
 use anyhow::Result;
+use sqlx::Row;
 
 impl Database {
     // ========== 区块查询 ==========

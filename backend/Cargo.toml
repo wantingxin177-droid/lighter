@@ -22,10 +22,10 @@ config = { workspace = true }
 # Web框架
 axum = { version = "0.7", features = ["ws", "http2", "macros"] }
 tower = { version = "0.4", features = ["full"] }
-tower-http = { version = "0.5", features = ["fs", "cors", "compression-gzip", "compression-brotli", "trace"] }
+tower-http = { version = "0.5", features = ["fs", "cors", "compression-gzip", "compression-br", "trace"] }
 
 # 数据库
-sqlx = { version = "0.7", features = ["runtime-tokio-native-tls", "postgres", "chrono", "uuid", "json", "migrate"] }
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "chrono", "uuid", "json", "migrate"] }
 
 # Redis
 redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
@@ -48,7 +48,7 @@ signal-hook-tokio = { version = "0.3", features = ["futures-v0_3"] }
 
 # 指标
 metrics = "0.22"
-metrics-exporter-prometheus = "0.13"
+metrics-exporter-prometheus = { version = "0.13", default-features = false }
 
 # 限流
 governor = "0.2"

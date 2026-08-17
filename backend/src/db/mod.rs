@@ -86,7 +86,7 @@ impl RedisCache {
             .arg(key)
             .arg(ttl_seconds)
             .arg(serialized)
-            .query_async(&mut conn)
+            .query_async::<_, ()>(&mut conn)
             .await?;
         
         Ok(())
@@ -96,7 +96,7 @@ impl RedisCache {
         let mut conn = self.connection_manager.clone();
         redis::cmd("DEL")
             .arg(key)
-            .query_async(&mut conn)
+            .query_async::<_, ()>(&mut conn)
             .await?;
         Ok(())
     }
@@ -106,7 +106,7 @@ impl RedisCache {
         redis::cmd("PUBLISH")
             .arg(channel)
             .arg(message)
-            .query_async(&mut conn)
+            .query_async::<_, ()>(&mut conn)
             .await?;
         Ok(())
     }

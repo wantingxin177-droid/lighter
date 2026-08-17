@@ -17,13 +17,11 @@ mod db;
 mod error;
 mod handlers;
 mod middleware;
-mod models;
 mod services;
-mod websocket;
 
 use crate::config::AppConfig;
 use crate::db::{Database, RedisCache};
-use crate::services::{BlockService, MarketService, WebSocketManager};
+use crate::services::{websocket, BlockService, MarketService, WebSocketManager};
 
 #[derive(Clone)]
 pub struct AppState {
@@ -124,7 +122,7 @@ fn create_router(state: AppState) -> Router {
         .route("/markets/:symbol/trades", get(handlers::get_recent_trades))
         .route("/markets/:symbol/funding", get(handlers::get_funding_rate))
         // WebSocket升级
-        .route("/ws", get(websocket::ws_handler))
+        .route("/ws", get(services::websocket::ws_handler))
         // 健康检查
         .route("/health", get(handlers::health_check))
         .route("/metrics", get(handlers::metrics_handler))

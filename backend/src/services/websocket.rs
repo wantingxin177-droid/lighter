@@ -11,7 +11,7 @@ use crate::db::models::WsMessage;
 use crate::AppState;
 
 // 频道类型
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum Channel {
     Blocks,
     Transactions,
@@ -47,7 +47,7 @@ impl WebSocketManager {
 
     pub async fn subscribe_channel(&self, channel: Channel) {
         let mut subs = self.subscriptions.write().await;
-        *subs.entry(channel).or_insert(0) += 1;
+        *subs.entry(channel.clone()).or_insert(0) += 1;
         debug!("Subscribed to {:?}", channel);
     }
 

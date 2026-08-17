@@ -20,14 +20,14 @@ pub use not_found::*;
 // 共享的页面组件
 
 #[component]
-pub fn PageTitle(#[prop(into)] title: String) -> impl IntoView {
+pub fn PageTitle(#[prop(into)] title: Signal<String>) -> impl IntoView {
     view! {
         <h1 class="text-2xl font-bold mb-6">{title}</h1>
     }
 }
 
 #[component]
-pub fn SectionTitle(#[prop(into)] title: String) -> impl IntoView {
+pub fn SectionTitle(#[prop(into)] title: Signal<String>) -> impl IntoView {
     view! {
         <h2 class="text-lg font-semibold mb-4 text-zinc-300">{title}</h2>
     }
@@ -36,7 +36,7 @@ pub fn SectionTitle(#[prop(into)] title: String) -> impl IntoView {
 #[component]
 pub fn StatCard(
     #[prop(into)] label: String,
-    #[prop(into)] value: String,
+    #[prop(into)] value: Signal<String>,
     #[prop(optional)] change: Option<String>,
 ) -> impl IntoView {
     view! {
